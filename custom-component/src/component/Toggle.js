@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Toggle = (props) => {
+const Toggle = () => {
   const [toggle, setToggle] = React.useState(false);
   const toggleChange = (e) => {
     //<input type="checkbox">의 체크 여부를 확인하고 싶다면 event.target.checked를 사용
@@ -21,7 +21,7 @@ const Toggle = (props) => {
         <SwitchLabel
           className="SwitchLabel"
           htmlFor="switchInput"
-          active={toggle}
+          // active={toggle}
         >
           <Switchball className="Switchball" />
         </SwitchLabel>

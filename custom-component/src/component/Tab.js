@@ -40,7 +40,6 @@ export default Tab;
 
 const Container = styled.div`
   width: 75%;
-  height: 20%;
   display: flex:
   align-items: center;
   margin: 3% 0;

@@ -72,8 +72,8 @@ const EditInput = styled.input`
 
 export const ClickToEdit = () => {
   const info = {
-    name: "신코딩",
-    age: 31,
+    name: "김코딩",
+    age: 20,
   };
 
   const [name, setName] = React.useState(info.name);
