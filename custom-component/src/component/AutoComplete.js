@@ -102,17 +102,14 @@ export const Autocomplete = () => {
       if (e.key === "ArrowDown" && options.length - 1 > selected) {
         setSelected(selected + 1);
       }
-      //options.length에 -1을 해주는 이유는 selected의 최대값을 맞춰주기 위해서이다.
-      //예를들어 밑에 option이 2개가 나왔다고 가정했을 때, selected값이 최대 1까지 변할 수 있게 해줘야한다.
-      //'ArrowDown'키를 누르면 selected는 0이 되고, 한번 더 누르면 1이 되고, 그 다음은 더이상 옵션이 없기 때문에 키가 안먹히게 해주는 것이다.
+      //options.length-1 = selected의 최대값
 
       if (e.key === "ArrowUp" && selected >= 0) {
         setSelected(selected - 1);
       }
       if (e.key === "Enter" && selected >= 0) {
-        //Enter키로 option 선택
         clickSelecte(options[selected]);
-        setSelected(-1); //Enter키를 눌러서 선택이 되면 다시 selected는 -1이 되야한다.
+        setSelected(-1); //Enter키를 눌러서 선택이 되면 다시 selected는 -1이 됨
       }
     }
   };
