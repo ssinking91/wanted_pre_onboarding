@@ -5,11 +5,12 @@ import { AutoComplete, ClickToEdit, Modal, Tab, Tag, Toggle } from './component/
 function App() {
   return (
     <Container>
-      <Tab />
+      {/* <Tab />
       <Modal />
       <Toggle />
       <Tag />
-      <ClickToEdit/>
+      <ClickToEdit/> */}
+      <AutoComplete/>
     </Container>
   );
 }
