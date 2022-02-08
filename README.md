@@ -264,7 +264,8 @@ const deleteTags = (idx) => {
 ### 자세한 실행 방법 🍦.
 
 > 1. input 태그에 단어를 입력하면 `onChange` 이벤트 핸들러 함수를 통해 `changeInput 함수`를 실행시켜 setInputVl(e.target.value) 통해 input value를 바꾸는 동시에 setVl(true) input value의 유무를 정함
-> 2. isVl를 통해 DropDown을 나타냄과 동시에 clickSelecte={clickSelecte}를 props로 넘겨준후 `onClick` 이벤트 핸들러 함수가 실행될때 `clickSelecte 함수`가 실행되어 setInputVl(option); 통해 input value를 바꾸는 동시에 setVl(false); 통해 DropDown을 없애줌
+> 2. isVl를 통해 DropDown을 나타냄과 동시에 clickSelecte={clickSelecte}를 props로 넘겨준 후 `onClick` 이벤트 핸들러 함수가 실행될 때 `clickSelecte 함수`가 실행되어 setInputVl(option) 통해 input value를 바꾸는 동시에 setVl(false) 통해 DropDown을 없애줌
+> 3. x 버튼 클릭 시 `onClick` 이벤트 핸들러 함수가 실행될 때 `deleteBtn 함수`가 실행되어 setInputVl("")를 해줘 input value 없게 만
 
 
 <br /><br />
