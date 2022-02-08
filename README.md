@@ -217,3 +217,54 @@ const deleteTags = (idx) => {
 > 4. input 태그에 `onChange` 이벤트 핸들러를 이용하여 `handleChange` 함수로 setNewValue를 통해 input의 value 속성을 변경해 주며, `onBlur` 이벤트 핸들러를 이용하여 `handleBlur` 함수로 setEdit(false)와 props.editChange(newValue)를 통해 isEdit 값과 부모요소의 name과 age 값을 변경해줌
 
 <br /><br />
+       
+### 6. AutoComplete Component
+
+<img src="https://user-images.githubusercontent.com/89959952/153041711-75a1b4f8-e5d7-4e75-8dd3-1bc8607cb28f.gif" width="500px" height="300px" title="ClickToEdit" alt="ClickToEdit"></img><br/>
+
+### 구현 방법 🧁.
+
+> 1. 리렌더링시에 인라인 스타일이 적용된 컴포넌트와 HTML 태그가 돔을 새로 그리게 되어 불필요한 리로딩이 발생 및 style 속성의 재사용성이 떨어져 `styled component` 사용
+> 2. 부모 자식의 관계에 있는 컴포넌트 간에 상태나 특정 값을 전달하기 위해 사용하기위해 `props`를 사용
+> 3. setState를 이용해서 값을 변화시키며, state가 변경되면 컴포넌트가 다시 렌더링되는 `useState(Hooks)` 사용
+> 4. JSX 내부의 자바스크립트 표현식에서 if 문을 사용할 수는 없으므로 `{ } 안에서 삼항연산자(조건부 연산자)`를 사용
+> 5. `<DropDownContainer>`를 사용해서 input창을 클릭했을 때만 DropDown버튼이 나오도록 컴포넌트를 나눔
+> 6. DropDown버튼 클릭시 theOptions 배열의 value를 input value 가 되게 함
+
+<br />
+
+### Error Handling Log 🍭.
+
+> 키보드 화살표로 DropDown option 선택 및 Enter키를 눌렀을 경우 그 option을 input value 값이 되게하려고 함
+
+```JavaScript
+       const [selected, setSelected] = React.useState(-1);
+       
+       const KeyUpSelecte = (e) => {
+    if (isVl) {
+      if (e.key === "ArrowDown" && options.length - 1 > selected) {
+        setSelected(selected + 1);
+      }
+
+      if (e.key === "ArrowUp" && selected >= 0) {
+        setSelected(selected - 1);
+      }
+      if (e.key === "Enter" && selected >= 0) {
+        clickSelecte(options[selected]);
+        setSelected(-1); 
+      }
+    }
+  };
+```
+- const [selected, setSelected] = React.useState(-1); => 키보드로 option 선택할 때 필요한 selected 상태 및 theOptions는 배열로 0부터 시작하기 때문에 React.useState(-1)하여 선택이 안되게 함
+- KeyUpSelecte => option을 키보드로 선택할 수 있게 해주는 이벤트 핸들러 함수 
+- options.length - 1 > selected 최대값 정함
+- setSelected(-1) => Enter 키를 눌러서 선택이 되면 다시 selected는 -1 되게 하여 선택이 안되게 함   
+       
+### 자세한 실행 방법 🍦.
+
+> 1. input 태그에 단어를 입력하면 `onChange` 이벤트 핸들러 함수를 통해 `changeInput 함수`를 실행시켜 setInputVl(e.target.value) 통해 input value를 바꾸는 동시에 setVl(true) input value의 유무를 정함
+> 2. isVl를 통해 DropDown을 나타냄과 동시에 clickSelecte={clickSelecte}를 props로 넘겨준후 `onClick` 이벤트 핸들러 함수가 실행될때 `clickSelecte 함수`가 실행되어 setInputVl(option); 통해 input value를 바꾸는 동시에 setVl(false); 통해 DropDown을 없애줌
+
+
+<br /><br />
